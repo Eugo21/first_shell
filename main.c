@@ -10,19 +10,16 @@ int main(void) {
     
 
     while (1) {
-        printf("$:~ ");
+        printf("$:~ "); //print the prompt
+        fflush(stdout); // Ensure the prompt is printed before waiting for input
 
-        fflush(stdout);
-
-        if (!fgets(input, MAX_INPUT_SIZE, stdin)) {
+        if (!fgets(input, MAX_INPUT_SIZE, stdin)) // Check for EOF or error
             break;
-        }
 
-        input[strcspn(input, "\n")] = '\0';
+        input[strcspn(input, "\n")] = '\0';  // Remove the newline character
 
-        if (strlen(input) == 0) {
+        if (strlen(input) == 0) // If the user just pressed Enter, prompt again
             continue;
-        }
     }
     return 0;
 }
